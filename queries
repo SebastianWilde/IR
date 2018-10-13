@@ -1,0 +1,14 @@
+﻿select * from (SELECT * FROM crosstab(
+  $$ SELECT id1, id2, freq FROM nllinker where id2 in(42819,36804,33007,19131,13769,6362) $$,
+  $$ SELECT id2 from nllinker where id1=1 $$
+) AS (
+  "id1" decimal, "42819" decimal, "36804" decimal, "33007" decimal, "19131" decimal, "13769" decimal,"6362" decimal
+)) T
+where T."42819" is not null or T."36804" is not null or T."33007" is not null or T."19131" is not null or T."13769" is not null or 
+ T."6362" is not null
+
+-- select * from nllinker where id1=1;
+
+-- select id from lemas where lema='God'
+
+-- select id2 from nllinker where id1=1685 limit 1598
